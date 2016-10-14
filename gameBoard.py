@@ -9,9 +9,10 @@ class GameBoard:
 	def generateBoard(self):
 		file = open("monoloPY/board.config","r") #opensFile
 		for line in file:
-			line = line.rstrip()
-			square = Square(line)
-			self.board.append(square)
+			if(line[0][0] != '#'):
+				line = line.rstrip()
+				square = Square(line)
+				self.board.append(square)
 		file.close()	
 	def printBoard(self):
 		for x in self.board:
