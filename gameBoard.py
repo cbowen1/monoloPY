@@ -9,9 +9,10 @@ class GameBoard:
 	def generateBoard(self):
 		file = open("monoloPY/board.config","r") #opensFile
 		for line in file:
-			if(line[0][0] != '#'):
+			if(line[0] != '#'):
 				line = line.rstrip()
-				square = Square(line)
+				line = line.split("|")
+				square = Square(line[0],line[1])
 				self.board.append(square)
 		file.close()	
 	def printBoard(self):
@@ -19,6 +20,12 @@ class GameBoard:
 			print(x.getName())
 	def printCurrentSquareName(self):
 		return str(self.board[self.currentSquare].getName())
+	def getCurrentSquareType(self):
+		return str(self.board[self.currentSquare].getType())
+	def printCurrentSquareInfo(self):
+		print("== Current Square ==")
+		print("Name: " + str(self.printCurrentSquareName()))
+		print("Type: " + str(self.getCurrentSquareType()))
 	def updateCurrentSquare(self,roll):
 		self.currentSquare = self.currentSquare + roll
 		if (self.currentSquare >= len(self.board)):

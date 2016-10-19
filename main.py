@@ -10,7 +10,7 @@ def playGame(board,gameOver):
 	while(gameOver == False):
 		diceRoll = util.rollDice()
 		board.updateCurrentSquare(diceRoll)
-		print ("You are currently on " + board.printCurrentSquareName())
+		board.printCurrentSquareInfo()
 		input("Press enter to continue...")
 
 util = Util()
